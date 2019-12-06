@@ -5,7 +5,7 @@ import com.tardybird.log.entity.Log;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -22,18 +22,18 @@ public interface LogMapper {
      */
     @Select("select link,name,content,pic_url,is_default,is_enabled," +
             "start_time,end_time,gmt_create,gmt_modified,is_deleted from ad")
-    @Results(id = "student", value = {
+    @Results(id = "ad", value = {
             @Result(property = "link", column = "link", javaType = String.class),
             @Result(property = "name", column = "name", javaType = String.class),
             @Result(property = "content", column = "content", javaType = String.class),
-            @Result(property = "pic_url", column = "pic_url", javaType = String.class),
-            @Result(property = "is_default", column = "is_default", javaType = Boolean.class),
-            @Result(property = "is_enabled", column = "is_enabled", javaType = Boolean.class),
-            @Result(property = "start_time", column = "start_time", javaType = Timestamp.class),
-            @Result(property = "end_time", column = "end_time", javaType = Timestamp.class),
-            @Result(property = "gmt_create", column = "gmt_create", javaType = Timestamp.class),
-            @Result(property = "gmt_modified", column = "gmt_modified", javaType = Timestamp.class),
-            @Result(property = "is_deleted", column = "is_deleted", javaType = Boolean.class),
+            @Result(property = "picUrl", column = "pic_url", javaType = String.class),
+            @Result(property = "beDefault", column = "is_default", javaType = Boolean.class),
+            @Result(property = "beEnable", column = "is_enabled", javaType = Boolean.class),
+            @Result(property = "startTime", column = "start_time", javaType = LocalDateTime.class),
+            @Result(property = "endTime", column = "end_time", javaType = LocalDateTime.class),
+            @Result(property = "gmtCreate", column = "gmt_create", javaType = LocalDateTime.class),
+            @Result(property = "gmtModified", column = "gmt_modified", javaType = LocalDateTime.class),
+            @Result(property = "beDelete", column = "is_deleted", javaType = Boolean.class),
     })
     List<Ad> findAllAds();
 
