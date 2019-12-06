@@ -1,10 +1,8 @@
 package com.tardybird.log.mapper;
 
 import com.tardybird.log.entity.Ad;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import com.tardybird.log.entity.Log;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -17,6 +15,11 @@ import java.util.List;
 @Mapper
 public interface LogMapper {
 
+    /**
+     * 所有广告列表
+     *
+     * @return a list
+     */
     @Select("select link,name,content,pic_url,is_default,is_enabled," +
             "start_time,end_time,gmt_create,gmt_modified,is_deleted from ad")
     @Results(id = "student", value = {
@@ -33,4 +36,13 @@ public interface LogMapper {
             @Result(property = "is_deleted", column = "is_deleted", javaType = Boolean.class),
     })
     List<Ad> findAllAds();
+
+    /**
+     * 生成管理员日志
+     *
+     * @param log Log object
+     */
+    @Insert("insert into log(admin_id,ip,type,status,gmt_create,gmr_modified,action_id)  " +
+            "values(#{admin_id},#{ip},#{type},#{action},#{status},now(),now(),#{action_id})")
+    void addLog(Log log);
 }
