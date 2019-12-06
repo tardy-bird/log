@@ -31,14 +31,14 @@ public class Log {
     /**
      * 操作的状态(如 200)
      */
-    private short statusCode;
+    private short status;
     /**
      * 操作对象的ID
      */
     private Integer actionId;
     private LocalDateTime gmtCreate;
     private LocalDateTime gmtModified;
-    private Boolean beDelete;
+    private Boolean isDelete;
 
     @Override
     public String toString() {
@@ -48,11 +48,11 @@ public class Log {
                 ", ip='" + ip + '\'' +
                 ", type=" + type +
                 ", action='" + action + '\'' +
-                ", statusCode=" + statusCode +
+                ", status=" + status +
                 ", actionId=" + actionId +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
-                ", beDelete=" + beDelete +
+                ", isDelete=" + isDelete +
                 '}';
     }
 
@@ -113,12 +113,12 @@ public class Log {
         this.action = action;
     }
 
-    public short getStatusCode() {
-        return statusCode;
+    public short getStatus() {
+        return status;
     }
 
-    public void setStatusCode(short statusCode) {
-        this.statusCode = statusCode;
+    public void setStatus(short status) {
+        this.status = status;
     }
 
     public Integer getActionId() {
@@ -145,11 +145,11 @@ public class Log {
         this.gmtModified = gmtModified;
     }
 
-    public Boolean getBeDelete() {
-        return beDelete;
+    public Boolean getDelete() {
+        return isDelete;
     }
 
-    public void setBeDelete(Boolean beDelete) {
-        this.beDelete = beDelete;
+    public void setDelete(Boolean delete) {
+        isDelete = delete;
     }
 }

@@ -35,7 +35,6 @@ public class LogController {
         log.setIp(logVo.getIp());
         log.setType(logVo.getType());
         log.setAction(logVo.getAction());
-        log.setStatusCode(logVo.getStatus());
         log.setActionId(logVo.getActionId());
 
         logService.addLog(log);

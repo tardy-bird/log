@@ -17,6 +17,5 @@ public class LogVo {
     private String ip;
     private Short type;
     private String action;
-    private Short status;
     private Integer actionId;
 }
