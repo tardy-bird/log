@@ -32,11 +32,11 @@ public class Ad {
      * 该广告是否是默认广告
      * 0: 不是   1：是
      */
-    private Boolean isDefault;
+    private Boolean beDefault;
     /**
      * 该广告是否启用
      */
-    private Boolean isEnable;
+    private Boolean beEnable;
     /**
      * 该广告上线的时间
      */
@@ -47,7 +47,7 @@ public class Ad {
     private LocalDateTime endTime;
     private LocalDateTime gmtCreate;
     private LocalDateTime gmtModified;
-    private Boolean isDelete;
+    private Boolean beDeleted;
 
     @Override
     public String toString() {
@@ -57,13 +57,13 @@ public class Ad {
                 ", name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", picUrl='" + picUrl + '\'' +
-                ", isDefault=" + isDefault +
-                ", isEnable=" + isEnable +
+                ", beDefault=" + beDefault +
+                ", beEnable=" + beEnable +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtModified=" + gmtModified +
-                ", isDelete=" + isDelete +
+                ", beDeleted=" + beDeleted +
                 '}';
     }
 
@@ -124,20 +124,20 @@ public class Ad {
         this.picUrl = picUrl;
     }
 
-    public Boolean getDefault() {
-        return isDefault;
+    public Boolean getBeDefault() {
+        return beDefault;
     }
 
-    public void setDefault(Boolean aDefault) {
-        isDefault = aDefault;
+    public void setBeDefault(Boolean beDefault) {
+        this.beDefault = beDefault;
     }
 
-    public Boolean getEnable() {
-        return isEnable;
+    public Boolean getBeEnable() {
+        return beEnable;
     }
 
-    public void setEnable(Boolean enable) {
-        isEnable = enable;
+    public void setBeEnable(Boolean beEnable) {
+        this.beEnable = beEnable;
     }
 
     public LocalDateTime getStartTime() {
@@ -172,11 +172,11 @@ public class Ad {
         this.gmtModified = gmtModified;
     }
 
-    public Boolean getDelete() {
-        return isDelete;
+    public Boolean getBeDeleted() {
+        return beDeleted;
     }
 
-    public void setDelete(Boolean delete) {
-        isDelete = delete;
+    public void setBeDeleted(Boolean beDeleted) {
+        this.beDeleted = beDeleted;
     }
 }
