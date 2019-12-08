@@ -15,7 +15,8 @@ import lombok.Setter;
 public class LogVo {
     private Integer adminId;
     private String ip;
-    private Short type;
+    private Integer type;
     private String action;
+    private Integer statusCode;
     private Integer actionId;
 }
