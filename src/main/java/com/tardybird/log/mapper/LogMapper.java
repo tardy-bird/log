@@ -33,7 +33,7 @@ public interface LogMapper {
             @Result(property = "endTime", column = "end_time", javaType = LocalDateTime.class),
             @Result(property = "gmtCreate", column = "gmt_create", javaType = LocalDateTime.class),
             @Result(property = "gmtModified", column = "gmt_modified", javaType = LocalDateTime.class),
-            @Result(property = "beDelete", column = "is_deleted", javaType = Boolean.class),
+            @Result(property = "beDeleted", column = "is_deleted", javaType = Boolean.class),
     })
     List<Ad> findAllAds();
 
@@ -42,7 +42,7 @@ public interface LogMapper {
      *
      * @param log Log object
      */
-    @Insert("insert into log(admin_id,ip,type,status,gmt_create,gmr_modified,action_id)  " +
-            "values(#{admin_id},#{ip},#{type},#{action},#{status},now(),now(),#{action_id})")
+    @Insert("insert into log(admin_id,ip,action,type,status,gmt_create,gmt_modified,action_id)  " +
+            "values(#{adminId},#{ip},#{action},#{type},#{statusCode},now(),now(),#{actionId})")
     void addLog(Log log);
 }
