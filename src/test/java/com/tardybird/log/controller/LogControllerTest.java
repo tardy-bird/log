@@ -18,6 +18,9 @@ class LogControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    LogController logController;
+
     @BeforeEach
     void setUp() {
     }
@@ -28,12 +31,23 @@ class LogControllerTest {
 
     @Test
     void getAllAds() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/logs/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
 
     @Test
     void addLog() {
+
+        LogVo logVo = new LogVo();
+
+        logVo.setAdminId(100);
+        logVo.setIp("127.0.0.1");
+        logVo.setType(123);
+        logVo.setAction("login");
+        logVo.setActionId(1);
+        logVo.setStatusCode(16);
+
+        logController.addLog(logVo);
     }
 }
