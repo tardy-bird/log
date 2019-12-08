@@ -1,5 +1,6 @@
 package com.tardybird.log.controller;
 
+import com.tardybird.log.entity.Log;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -39,15 +40,15 @@ class LogControllerTest {
     @Test
     void addLog() {
 
-        LogVo logVo = new LogVo();
+        Log log = new Log();
 
-        logVo.setAdminId(100);
-        logVo.setIp("127.0.0.1");
-        logVo.setType(123);
-        logVo.setAction("login");
-        logVo.setActionId(1);
-        logVo.setStatusCode(16);
+        log.setAdminId(100);
+        log.setIp("127.0.0.1");
+        log.setType(123);
+        log.setAction("login");
+        log.setActionId(1);
+        log.setStatusCode(16);
 
-        logController.addLog(logVo);
+        logController.addLog(log);
     }
 }

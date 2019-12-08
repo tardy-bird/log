@@ -36,17 +36,7 @@ public class LogController {
         return ResponseUtil.ok(adList);
     }
 
-    public Object addLog(@RequestBody LogVo logVo) {
-
-        Log log = new Log();
-
-        log.setAdminId(logVo.getAdminId());
-        log.setIp(logVo.getIp());
-        log.setType(logVo.getType());
-        log.setAction(logVo.getAction());
-        log.setActionId(logVo.getActionId());
-        log.setStatusCode(logVo.getStatusCode());
-
+    public Object addLog(@RequestBody Log log) {
         logService.addLog(log);
         return ResponseUtil.ok(log);
     }
