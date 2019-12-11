@@ -15,7 +15,7 @@ import java.util.List;
  * @author nick
  */
 @RestController
-@RequestMapping("/logs")
+@RequestMapping("/logService")
 public class LogController {
 
     final
