@@ -32,7 +32,7 @@ class LogControllerTest {
 
     @Test
     void getAllAds() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/logs/"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/logService/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
