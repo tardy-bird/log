@@ -1,9 +1,6 @@
 package com.tardybird.log.service;
 
-import com.tardybird.log.entity.Ad;
 import com.tardybird.log.entity.Log;
-
-import java.util.List;
 
 /**
  * @author nick
@@ -13,9 +10,12 @@ public interface LogService {
     /**
      * 所有广告列表
      *
-     * @return a list
+     * @param adminId x
+     * @param page    x
+     * @param limit   x
+     * @return x
      */
-    List<Ad> getAllAds();
+    Object getAllAds(Integer adminId, Integer page, Integer limit);
 
     /**
      * 生成管理员日志

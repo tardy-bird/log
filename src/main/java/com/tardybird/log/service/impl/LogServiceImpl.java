@@ -1,6 +1,7 @@
 package com.tardybird.log.service.impl;
 
-import com.tardybird.log.entity.Ad;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.tardybird.log.entity.Log;
 import com.tardybird.log.mapper.LogMapper;
 import com.tardybird.log.service.LogService;
@@ -22,8 +23,10 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public List<Ad> getAllAds() {
-        return logMapper.findAllAds();
+    public Object getAllAds(Integer adminId, Integer page, Integer limit) {
+        PageHelper.startPage(page, limit);
+        List<Log> logs = logMapper.findAllLogs(adminId);
+        return new PageInfo<>(logs);
     }
 
     @Override
