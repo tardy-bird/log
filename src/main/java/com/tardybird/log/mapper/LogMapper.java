@@ -20,13 +20,13 @@ public interface LogMapper {
      * @param adminId x
      * @return x
      */
-    @Select("select * from log where admin_id=#{adminId}")
+    @Select("select * from oomall_log where admin_id=#{adminId}")
     @Results(id = "log", value = {
             @Result(property = "id", column = "id", javaType = Integer.class),
             @Result(property = "adminId", column = "admin_id", javaType = Integer.class),
             @Result(property = "ip", column = "ip", javaType = String.class),
             @Result(property = "type", column = "type", javaType = Integer.class),
-            @Result(property = "action", column = "action", javaType = String.class),
+            @Result(property = "actions", column = "actions", javaType = String.class),
             @Result(property = "statusCode", column = "status", javaType = Integer.class),
             @Result(property = "actionId", column = "action_id", javaType = Integer.class),
             @Result(property = "gmtCreate", column = "gmt_create", javaType = LocalDateTime.class),
@@ -39,7 +39,7 @@ public interface LogMapper {
      *
      * @param log Log object
      */
-    @Insert("insert into log(admin_id,ip,action,type,status,gmt_create,gmt_modified,action_id)  " +
-            "values(#{adminId},#{ip},#{action},#{type},#{statusCode},now(),now(),#{actionId})")
+    @Insert("insert into oomall_log(admin_id,ip,actions,type,status,gmt_create,gmt_modified,action_id)  " +
+            "values(#{adminId},#{ip},#{actions},#{type},#{statusCode},now(),now(),#{actionId})")
     void addLog(Log log);
 }

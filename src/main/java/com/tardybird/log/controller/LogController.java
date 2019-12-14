@@ -4,15 +4,14 @@ import com.tardybird.log.entity.Log;
 import com.tardybird.log.service.impl.LogServiceImpl;
 import com.tardybird.log.util.ResponseUtil;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author nick
  */
 @RestController
-@RequestMapping("/logService")
 public class LogController {
 
     final
@@ -36,6 +35,7 @@ public class LogController {
         return ResponseUtil.ok(adList);
     }
 
+    @PostMapping("/log")
     public Object addLog(@RequestBody Log log) {
         if (log == null) {
             return ResponseUtil.fail();

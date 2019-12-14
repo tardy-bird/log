@@ -4,5 +4,14 @@ spring:
     username: oomall
     password: oomallp@$$w0rd
     driver-class-name: com.mysql.cj.jdbc.Driver
-server:
-  port: 8085
+  application:
+    name: Log
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://47.96.159.71:8888/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 47.96.159.71
+    non-secure-port: 8805

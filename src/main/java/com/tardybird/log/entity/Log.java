@@ -27,7 +27,7 @@ public class Log {
     /**
      * 操作的动作
      */
-    private String action;
+    private String actions;
     /**
      * 操作的状态(如 200)
      */
@@ -46,7 +46,7 @@ public class Log {
                 ", adminId=" + adminId +
                 ", ip='" + ip + '\'' +
                 ", type=" + type +
-                ", action='" + action + '\'' +
+                ", actions='" + actions + '\'' +
                 ", statusCode=" + statusCode +
                 ", actionId=" + actionId +
                 ", gmtCreate=" + gmtCreate +
@@ -104,11 +104,11 @@ public class Log {
     }
 
     public String getAction() {
-        return action;
+        return actions;
     }
 
     public void setAction(String action) {
-        this.action = action;
+        this.actions = action;
     }
 
     public Integer getStatusCode() {
