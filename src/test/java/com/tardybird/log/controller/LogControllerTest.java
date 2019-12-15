@@ -32,7 +32,7 @@ class LogControllerTest {
 
     @Test
     void getAllAds() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/logService/logs"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/logs"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
     }
@@ -45,7 +45,7 @@ class LogControllerTest {
         log.setAdminId(100);
         log.setIp("127.0.0.1");
         log.setType(123);
-        log.setAction("login");
+        log.setActions("login");
         log.setActionId(1);
         log.setStatusCode(16);
 
