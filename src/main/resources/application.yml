@@ -15,3 +15,6 @@ eureka:
     prefer-ip-address: true
     ip-address: 47.96.159.71
     non-secure-port: 8805
+
+server:
+  port: 8805
