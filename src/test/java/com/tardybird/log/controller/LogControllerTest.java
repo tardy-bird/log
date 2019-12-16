@@ -37,18 +37,18 @@ class LogControllerTest {
                 .andDo(MockMvcResultHandlers.print());
     }
 
-    @Test
-    void addLog() {
-
-        Log log = new Log();
-
-        log.setAdminId(100);
-        log.setIp("127.0.0.1");
-        log.setType(123);
-        log.setActions("login");
-        log.setActionId(1);
-        log.setStatusCode(16);
-
-        logController.addLog(log);
-    }
+//    @Test
+//    void addLog() {
+//
+//        Log log = new Log();
+//
+//        log.setAdminId(100);
+//        log.setIp("127.0.0.1");
+//        log.setType(123);
+//        log.setActions("login");
+//        log.setActionId(1);
+//        log.setStatusCode(16);
+//
+//        logController.addLog(log);
+//    }
 }

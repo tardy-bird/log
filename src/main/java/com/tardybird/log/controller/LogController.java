@@ -2,11 +2,12 @@ package com.tardybird.log.controller;
 
 import com.tardybird.log.entity.Log;
 import com.tardybird.log.service.impl.LogServiceImpl;
+import com.tardybird.log.util.IpUtil;
 import com.tardybird.log.util.ResponseUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author nick
@@ -16,6 +17,7 @@ public class LogController {
 
     final
     LogServiceImpl logService;
+
 
     public LogController(LogServiceImpl logService) {
         this.logService = logService;
@@ -27,16 +29,20 @@ public class LogController {
      * @return 所有操作日志
      */
     @GetMapping("/logs")
-    public Object list(Integer adminId, Integer page, Integer limit) {
-        if (adminId == null || adminId < 0 || page == null || page < 0 || limit == null || limit < 0) {
-            return ResponseUtil.badArgument();
+    public Object list(@RequestParam Integer adminId,
+                       @RequestParam(defaultValue = "1") Integer page,
+                       @RequestParam(defaultValue = "10") Integer limit) {
+        if (adminId == null || adminId <= 0 || page == null || page < 0 || limit == null || limit < 0) {
+            return ResponseUtil.badArgumentValue();
         }
         Object adList = logService.getAllAds(adminId, page, limit);
         return ResponseUtil.ok(adList);
     }
 
     @PostMapping("/log")
-    public Object addLog(@RequestBody Log log) {
+    public Object addLog(@RequestBody Log log,HttpServletRequest request) {
+        String ipAddr = IpUtil.getIpAddr(request);
+        log.setIp(ipAddr);
         if (log == null) {
             return ResponseUtil.fail();
         }
