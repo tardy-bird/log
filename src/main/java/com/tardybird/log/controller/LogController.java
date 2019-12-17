@@ -58,7 +58,7 @@ public class LogController {
     @PostMapping("/log")
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
 
-        if (log == null) {
+        if (log == null || log.getActionId() < 0) {
             return null;
         }
 
