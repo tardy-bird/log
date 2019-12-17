@@ -41,11 +41,34 @@ public class LogController {
         return ResponseUtil.ok(adList);
     }
 
+
+    private boolean isNumeric(String str) {
+        if (str == null || str.length() == 0) {
+            return false;
+        }
+        for (int i = str.length(); --i >= 0; ) {
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     @PostMapping("/log")
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
+
+        if (log == null) {
+            return null;
+        }
+
         String ipAddr = IpUtil.getIpAddr(request);
         log.setIp(ipAddr);
-        log.setAdminId(Integer.valueOf(request.getHeader("id")));
+
+        String id = request.getHeader("id");
+
+        if (isNumeric(id)) {
+            log.setAdminId(Integer.valueOf(id));
+        }
         logService.addLog(log);
         return ResponseUtil.ok(log);
     }
