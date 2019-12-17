@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author nick
  */
 @RestController
+@RequestMapping("/logService")
 public class LogController {
 
     final
