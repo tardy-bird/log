@@ -4,7 +4,6 @@ import com.tardybird.log.entity.Log;
 import com.tardybird.log.service.impl.LogServiceImpl;
 import com.tardybird.log.util.IpUtil;
 import com.tardybird.log.util.ResponseUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,10 @@ public class LogController {
     public Object list(@RequestParam Integer adminId,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit) {
-        if (adminId == null || adminId <= 0 || page == null || page < 0 || limit == null || limit < 0) {
+        if (adminId == null || page == null || limit == null) {
+            return ResponseUtil.badArgument();
+        }
+        if (adminId <= 0 || page < 0 || limit < 0) {
             return ResponseUtil.badArgumentValue();
         }
         Object adList = logService.getAllAds(adminId, page, limit);
@@ -40,12 +42,9 @@ public class LogController {
     }
 
     @PostMapping("/log")
-    public Object addLog(@RequestBody Log log,HttpServletRequest request) {
+    public Object addLog(@RequestBody Log log, HttpServletRequest request) {
         String ipAddr = IpUtil.getIpAddr(request);
         log.setIp(ipAddr);
-        if (log == null) {
-            return ResponseUtil.fail();
-        }
         logService.addLog(log);
         return ResponseUtil.ok(log);
     }
