@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
  * @author nick
  */
 @RestController
-@RequestMapping("/logService")
 public class LogController {
 
     final
@@ -58,7 +57,11 @@ public class LogController {
     @PostMapping("/log")
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
 
-        if (log == null || log.getActionId() < 0) {
+        if (log == null) {
+            return null;
+        }
+
+        if (log.getActionId() == null || log.getActionId() < 0) {
             return null;
         }
 
