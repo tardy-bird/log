@@ -45,6 +45,7 @@ public class LogController {
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
         String ipAddr = IpUtil.getIpAddr(request);
         log.setIp(ipAddr);
+        log.setAdminId(Integer.valueOf(request.getHeader("id")));
         logService.addLog(log);
         return ResponseUtil.ok(log);
     }
