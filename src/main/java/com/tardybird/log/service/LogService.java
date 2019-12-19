@@ -8,19 +8,19 @@ import com.tardybird.log.entity.Log;
 public interface LogService {
 
     /**
-     * 所有广告列表
+     * 获取所有日志列表
      *
-     * @param adminId x
-     * @param page    x
-     * @param limit   x
-     * @return x
+     * @param adminId 管理员ID
+     * @param page    页数
+     * @param limit   每一页限制
+     * @return 分页日志列表
      */
-    Object getAllAds(Integer adminId, Integer page, Integer limit);
+    Object getAllLogs(Integer adminId, Integer page, Integer limit);
 
     /**
      * 生成管理员日志
      *
-     * @param log Log object
+     * @param log Log对象
      */
     void addLog(Log log);
 }

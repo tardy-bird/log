@@ -15,17 +15,17 @@ import java.util.List;
 public interface LogMapper {
 
     /**
-     * 所有广告列表
+     * 所有日志列表
      *
-     * @param id x
-     * @return x
+     * @param id 管理员ID
+     * @return Log列表
      */
     List<Log> findAllLogs(@Param("id") Integer id);
 
     /**
      * 生成管理员日志
      *
-     * @param log Log object
+     * @param log 日志对象
      */
     void addLog(Log log);
 }

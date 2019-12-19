@@ -17,7 +17,6 @@ public class LogController {
     final
     LogServiceImpl logService;
 
-
     public LogController(LogServiceImpl logService) {
         this.logService = logService;
     }
@@ -31,17 +30,21 @@ public class LogController {
     public Object list(@RequestParam Integer adminId,
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit) {
-        if (adminId == null || page == null || limit == null) {
-            return ResponseUtil.badArgument();
+        if (adminId == null || adminId <= 0 || page < 0 || limit < 0) {
+            return ResponseUtil.findLogsFailed();
         }
-        if (adminId <= 0 || page < 0 || limit < 0) {
-            return ResponseUtil.badArgumentValue();
-        }
-        Object adList = logService.getAllAds(adminId, page, limit);
+
+        Object adList = logService.getAllLogs(adminId, page, limit);
+
         return ResponseUtil.ok(adList);
     }
 
-
+    /**
+     * 判断字符串是否可以转换为数字
+     *
+     * @param str 给定的字符串
+     * @return true 如果可以
+     */
     private boolean isNumeric(String str) {
         if (str == null || str.length() == 0) {
             return false;
@@ -54,17 +57,21 @@ public class LogController {
         return true;
     }
 
+    /**
+     * 内部接口，提供给个模块调用，记录管理员日志
+     *
+     * @param log     日志
+     * @param request POST请求，头部带有IP和管理员ID
+     * @return 成功与否
+     */
     @PostMapping("/log")
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
-
-        if (log == null) {
-            return null;
-        }
 
         if (log.getActionId() == null || log.getActionId() < 0) {
             return null;
         }
 
+        // 获取请求写日志操作的IP地址
         String ipAddr = IpUtil.getIpAddr(request);
         log.setIp(ipAddr);
 
@@ -73,7 +80,10 @@ public class LogController {
         if (isNumeric(id)) {
             log.setAdminId(Integer.valueOf(id));
         }
+
+        // 如果不再header，默认放在body里传
         logService.addLog(log);
-        return ResponseUtil.ok(log);
+
+        return log;
     }
 }

@@ -23,7 +23,7 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public Object getAllAds(Integer adminId, Integer page, Integer limit) {
+    public Object getAllLogs(Integer adminId, Integer page, Integer limit) {
         PageHelper.startPage(page, limit);
         List<Log> logs = logMapper.findAllLogs(adminId);
         return new PageInfo<>(logs);
