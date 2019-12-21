@@ -7,6 +7,7 @@ import com.tardybird.log.util.ResponseUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
 
 /**
  * @author nick
@@ -31,7 +32,7 @@ public class LogController {
                        @RequestParam(defaultValue = "1") Integer page,
                        @RequestParam(defaultValue = "10") Integer limit) {
         if (adminId == null || adminId <= 0 || page < 0 || limit < 0) {
-            return ResponseUtil.findLogsFailed();
+            return ResponseUtil.badArgument();
         }
 
         Object adList = logService.getAllLogs(adminId, page, limit);
@@ -67,7 +68,8 @@ public class LogController {
     @PostMapping("/log")
     public Object addLog(@RequestBody Log log, HttpServletRequest request) {
 
-        if (log.getActionId() == null || log.getActionId() < 0) {
+        if (log.getActionId() == null || log.getActionId() < 0
+                || log.getIp() == null || log.getType() < 0) {
             return null;
         }
 
@@ -81,8 +83,11 @@ public class LogController {
             log.setAdminId(Integer.valueOf(id));
         }
 
-        // 如果不再header，默认放在body里传
+        // 如果不在header，默认放在body里传
         logService.addLog(log);
+
+        log.setGmtCreate(LocalDateTime.now());
+        log.setGmtModified(LocalDateTime.now());
 
         return log;
     }

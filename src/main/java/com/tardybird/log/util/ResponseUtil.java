@@ -18,11 +18,22 @@ public class ResponseUtil {
         return objectMap;
     }
 
+    public static Object ok() {
+        Map<String, Object> objectMap = new HashMap<>(16);
+        objectMap.put("errno", 0);
+        objectMap.put("errmsg", "成功");
+        return objectMap;
+    }
+
     public static Object fail(int errno, String errmsg) {
         Map<String, Object> objectMap = new HashMap<>(16);
         objectMap.put("errno", errno);
         objectMap.put("errmsg", errmsg);
         return objectMap;
+    }
+
+    public static Object badArgument() {
+        return fail(580, "参数不合法");
     }
 
     public static Object findLogsFailed() {
