@@ -17,10 +17,12 @@ public interface LogMapper {
     /**
      * 所有日志列表
      *
-     * @param id 管理员ID
+     * @param id    管理员ID
+     * @param limit x
+     * @param page  x
      * @return Log列表
      */
-    List<Log> findAllLogs(@Param("id") Integer id);
+    List<Log> findAllLogs(@Param("id") Integer id, Integer page, Integer limit);
 
     /**
      * 生成管理员日志

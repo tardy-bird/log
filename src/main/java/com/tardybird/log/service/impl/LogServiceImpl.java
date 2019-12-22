@@ -1,13 +1,9 @@
 package com.tardybird.log.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.tardybird.log.entity.Log;
 import com.tardybird.log.mapper.LogMapper;
 import com.tardybird.log.service.LogService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author nick
@@ -24,9 +20,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public Object getAllLogs(Integer adminId, Integer page, Integer limit) {
-        PageHelper.startPage(page, limit);
-        List<Log> logs = logMapper.findAllLogs(adminId);
-        return new PageInfo<>(logs);
+        return logMapper.findAllLogs(adminId, page, limit);
     }
 
     @Override

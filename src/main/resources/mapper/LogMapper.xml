@@ -17,6 +17,7 @@
         select *
         from oomall_log
         where admin_id = #{id}
+        limit #{page},#{limit}
     </select>
 
     <insert id="addLog" parameterType="Log">
