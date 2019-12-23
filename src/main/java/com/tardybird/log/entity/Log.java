@@ -8,9 +8,10 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 /**
- * @Author: 数据库与对象模型标准组
- * @Description:日志信息
- * @Data:Created in 14:50 2019/12/11
+ * 日志信息
+ *
+ * @author 数据库与对象模型标准组
+ * @date Created in 14:50 2019/12/11
  **/
 @Getter
 @Setter
