@@ -1,31 +1,31 @@
 ########################################################
 # PCW
-#spring:
-#  datasource:
-#    hikari:
-#      maximum-pool-size: 10
-#    url: jdbc:mysql://47.52.88.176/DB3_8?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: user3_8
-#    password: ooad8
-#  application:
-#    name: logService
-#
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://47.96.159.71:8888/eureka/
-#  instance:
-#    prefer-ip-address: true
-#    ip-address: 47.96.159.71
-#    non-secure-port: 8840
-#
-#mybatis:
-#  type-aliases-package: com.tardybird.log.entity
-#  mapper-locations: classpath:mapper/*.xml
-#
-#server:
-#  port: 8840
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+    url: jdbc:mysql://47.52.88.176/DB3_8?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: user3_8
+    password: ooad8
+  application:
+    name: logService
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://47.96.159.71:8888/eureka/
+  instance:
+    prefer-ip-address: true
+    ip-address: 47.98.252.133
+    non-secure-port: 8840
+
+mybatis:
+  type-aliases-package: com.tardybird.log.entity
+  mapper-locations: classpath:mapper/*.xml
+
+server:
+  port: 8840
 
 
 ######################################################################################
@@ -64,9 +64,9 @@
 #  datasource:
 #    hikari:
 #      maximum-pool-size: 10
-#    url: jdbc:mysql://148.70.28.112/wowomall?useUnicode=true&characterEncoding=utf8&useSSL=false
-#    username: wowoto
-#    password: zqhlovekly
+#    url: jdbc:mysql://47.52.88.176/DB2_1?useUnicode=true&characterEncoding=utf8&useSSL=false
+#    username: user2_1
+#    password: ooad1
 #
 #  application:
 #    name: logService
@@ -74,10 +74,10 @@
 #eureka:
 #  client:
 #    service-url:
-#      defaultZone: http://148.70.28.112:8761/eureka/
+#      defaultZone: http://139.196.253.120:8761/eureka/
 #  instance:
 #    prefer-ip-address: true
-#    ip-address: 121.199.2.219
+#    ip-address: 47.96.159.71
 #    non-secure-port: 8841
 #
 #mybatis:
@@ -142,3 +142,58 @@
 #
 #server:
 #  port: 8844
+
+##################################################################
+# LLH
+#spring:
+#  datasource:
+#    hikari:
+#      maximum-pool-size: 10
+#    url: jdbc:mysql://47.52.88.176/DB1_8?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+#    username: user1_8
+#    password: ooad8
+#  application:
+#    name: logService
+#server:
+#  port: 8845
+#
+#mybatis:
+#  type-aliases-package: com.tardybird.log.entity
+#  mapper-locations: classpath:mapper/*.xml
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://139.196.212.100:8761/eureka/
+#  instance:
+#    prefer-ip-address: true
+#    ip-address: 47.96.159.71
+#    non-secure-port: 8845
+
+
+###############################################################
+#WYD
+#spring:
+#  datasource:
+#    hikari:
+#      maximum-pool-size: 10
+#    url: jdbc:mysql://47.52.88.176/DB1_7?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8
+#    username: user1_7
+#    password: ooad7
+#  application:
+#    name: logService
+#server:
+#  port: 8846
+#
+#mybatis:
+#  type-aliases-package: com.tardybird.log.entity
+#  mapper-locations: classpath:mapper/*.xml
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://112.124.5.232:8011/eureka/
+#  instance:
+#    prefer-ip-address: true
+#    ip-address: 47.96.159.71
+#    non-secure-port: 8846
